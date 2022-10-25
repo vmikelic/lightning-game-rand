@@ -4,7 +4,7 @@ asteroid.__index = asteroid
 local config={
     max_velocity=80,
     max_acceleration=30,
-    wiggle_x=15,
+    wiggle_x=50,
     wiggle_y=0
 }
 

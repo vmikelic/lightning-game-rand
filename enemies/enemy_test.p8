@@ -4,10 +4,12 @@ __lua__
 #include enemy.lua
 #include asteroid.lua
 #include enemy_manager.lua
+#include spawner.lua
 #include ../util/wait.lua
 -->8
 -- update loop
 function _update()
+    spawner._update()
     enemy_manager._update()
     timers._update()
 end
@@ -20,16 +22,16 @@ end
 -->8
 -- init
 function _init()
-    enemy_manager.append(asteroid:new({x=14,y=4}))
-    enemy_manager.append(asteroid:new({x=34,y=4}))
-    enemy_manager.append(asteroid:new({x=54,y=4}))
-    enemy_manager.append(asteroid:new({x=74,y=4}))
-    enemy_manager.append(asteroid:new({x=94,y=4}))
-    enemy_manager.append(asteroid:new({x=114,y=4}))
+    -- enemy_manager.append(asteroid:new({x=14,y=4}))
+    -- enemy_manager.append(asteroid:new({x=34,y=4}))
+    -- enemy_manager.append(asteroid:new({x=54,y=4}))
+    -- enemy_manager.append(asteroid:new({x=74,y=4}))
+    -- enemy_manager.append(asteroid:new({x=94,y=4}))
+    -- enemy_manager.append(asteroid:new({x=114,y=4}))
 
-    wait(function()
-        enemy_manager.append(asteroid:new({x=14,y=14}))
-    end, 3)
+    -- wait(function()
+    --     enemy_manager.append(asteroid:new({x=14,y=14}))
+    -- end, 3)
 end
 -->8
 -- globals
