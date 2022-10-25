@@ -72,7 +72,7 @@ function enemy:_update()
         -- move x
         if self.vel_x then
             self.x += self.vel_x/fps
-            -- apply wiggle
+            -- apply vertical wiggle
             if self.wiggle_y > 0 then
                 local wiggle = sin(self.x/self.wiggle_y)
                 if self.flip_y then wiggle = -wiggle end
@@ -82,7 +82,7 @@ function enemy:_update()
         -- move y
         if self.vel_y then
             self.y += self.vel_y/fps
-            -- apply wiggle
+            -- apply horizontal wiggle
             if self.wiggle_x > 0 then
                 local wiggle = sin(self.y/self.wiggle_x)
                 if self.flip_x then wiggle = -wiggle end
