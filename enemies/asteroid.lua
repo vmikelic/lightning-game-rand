@@ -28,9 +28,3 @@ function asteroid:new(o)
 
     return en
 end
-
--- update loop
--- @override
-function asteroid:_update()
-
-end--_update()
