@@ -1,5 +1,13 @@
 animation_data = {}
-animation = {pos_x = 0,pos_y = 0,sprite_indices = {},sprite_width = 0,sprite_height = 0,frame_cycle = 1,current_frame = 0}
+animation = {
+    pos_x = 0,
+    pos_y = 0,
+    sprite_indices = {},
+    sprite_width = 0,
+    sprite_height = 0,
+    frame_cycle = 1,
+    current_frame = 0
+}
 
 function animation:new(pos_x_,pos_y_,sprite_indices_,sprite_width_,sprite_height_,frame_cycle_)
     self.__index = self
