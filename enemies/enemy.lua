@@ -58,11 +58,11 @@ function enemy:_update()
     end
 
     -- apply acceleration
-    if self.acc_x then
+    if self.acc_x > 0 then
         self.vel_x += self.acc_x/fps
         self.vel_x = min(self.vel_max, self.vel_x)
     end
-    if self.acc_y then
+    if self.acc_y > 0 then
         self.vel_y += self.acc_y/fps
         self.vel_y = min(self.vel_max, self.vel_y)
     end
@@ -70,7 +70,7 @@ function enemy:_update()
     -- if not frozen in space, apply velocity
     if not self.static then
         -- move x
-        if self.vel_x then
+        if self.vel_x > 0 then
             self.x += self.vel_x/fps
             -- apply vertical wiggle
             if self.wiggle_y > 0 then
@@ -80,7 +80,7 @@ function enemy:_update()
             end
         end
         -- move y
-        if self.vel_y then
+        if self.vel_y > 0 then
             self.y += self.vel_y/fps
             -- apply horizontal wiggle
             if self.wiggle_x > 0 then
