@@ -13,6 +13,8 @@ enemy={
     vel_y=0,
     acc_x=0,
     acc_y=0,
+    wiggle_x=0,
+    wiggle_y=0,
     static=false,
     static_end=0,
     vel_max=30
@@ -67,11 +69,25 @@ function enemy:_update()
 
     -- if not frozen in space, apply velocity
     if not self.static then
+        -- move x
         if self.vel_x then
             self.x += self.vel_x/fps
+            -- apply wiggle
+            if self.wiggle_y > 0 then
+                local wiggle = sin(self.x/self.wiggle_y)
+                if self.flip_y then wiggle = -wiggle end
+                self.y += wiggle
+            end
         end
+        -- move y
         if self.vel_y then
             self.y += self.vel_y/fps
+            -- apply wiggle
+            if self.wiggle_x > 0 then
+                local wiggle = sin(self.y/self.wiggle_x)
+                if self.flip_x then wiggle = -wiggle end
+                self.x += wiggle
+            end
         end
     end
 

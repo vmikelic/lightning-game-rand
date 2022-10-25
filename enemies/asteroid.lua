@@ -3,9 +3,12 @@ asteroid.__index = asteroid
 
 local config={
     max_velocity=80,
-    max_acceleration=30
+    max_acceleration=30,
+    wiggle_x=15,
+    wiggle_y=0
 }
 
+-- create a new asteroid enemy variant
 function asteroid:new(o)
     local t_f = {true,false}
 
@@ -16,6 +19,8 @@ function asteroid:new(o)
     -- pseudo-random sprite drawing
     o.flip_x = t_f[flr(rnd(2))+1]
     o.flip_y = t_f[flr(rnd(2))+1]
+    o.wiggle_x = config.wiggle_x
+    o.wiggle_y = config.wiggle_y
 
     -- create enemy object and apply asteroid properties
     local en = enemy:new(o)
@@ -23,3 +28,9 @@ function asteroid:new(o)
 
     return en
 end
+
+-- update loop
+-- @override
+function asteroid:_update()
+
+end--_update()
