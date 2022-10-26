@@ -111,7 +111,8 @@ function enemy:_draw()
 
     -- draw sprite or debug circle
     if self.sprite > -1 then
-        spr(self.sprite,self.x,self.y,1,1,self.flip_x,self.flip_y)
+        animate(self, self.x, self.y, {7,6,5,4,3,2,1,0}, 1, 1, 3) --rotated
+        --spr(self.sprite,self.x,self.y,1,1,self.flip_x,self.flip_y) -- static
     else
         circfill(self.x,self.y,4,0)
     end
