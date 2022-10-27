@@ -128,6 +128,7 @@ function enemy:_player_collision()
                         animate_once(player_ship.x+(flr(rnd(16))-8),player_ship.y+(flr(rnd(16))-8),{43,45,64,66,68},2,2,flr(rnd(5))+3,flr(rnd(2))+1)
                     end
                     enemy_manager.remove(en) -- remove asteroid
+                    sfx(0)
                     --do stuff when player is hit
                 end
             end

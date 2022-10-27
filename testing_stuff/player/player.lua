@@ -71,6 +71,7 @@ end
 
 function player:update()
 	self:control()
+	sfx(1)
 end
 
 function player:draw()

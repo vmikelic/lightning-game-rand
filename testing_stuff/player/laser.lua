@@ -25,6 +25,7 @@ function laser:is_hit()
 					if(self.x < en.x+8) then
 						animate_once(en.x-4,en.y-4,{43,45,64,66,68},2,2,3,1)
 						enemy_manager.remove(en)
+						sfx(3)
 						return true
 					end
 				end

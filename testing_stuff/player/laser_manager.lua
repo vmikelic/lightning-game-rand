@@ -14,6 +14,7 @@ end
 
 function laser_manager:fire_laser(local_x, local_y)
 	add(self.lasers, laser:new(local_x-1, local_y))
+	sfx(2)
 	animate_once(local_x-3,local_y-4,{0,1,2},1,1,1,1)
 end
 
