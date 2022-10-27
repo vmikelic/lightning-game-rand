@@ -1,4 +1,5 @@
 animation_data = {}
+animation_data_once = {}
 animation = {
     pos_x = 0,
     pos_y = 0,
@@ -32,6 +33,24 @@ function animate(object,pos_x,pos_y,sprite_indices,sprite_width,sprite_height,fr
     animation_data[obj_hash(object)].pos_y = pos_y
     play_animation(animation_data[obj_hash(object)])
 end
+
+function animate_once(pos_x,pos_y,sprite_indices,sprite_width,sprite_height,frame_cycle,num_cycles)
+    a = animation:new(pos_x,pos_y,sprite_indices,sprite_width,sprite_height,frame_cycle)
+    add(animation_data_once,{anim=a,num_cycles=(#a.sprite_indices*num_cycles)})
+end
+
+function handle_animations()
+    for a in all(animation_data_once) do
+        if (a.anim.current_frame % a.anim.frame_cycle == 0) then
+            a.num_cycles = a.num_cycles - 1
+        end
+        play_animation(a.anim)
+        if (a.num_cycles == 0) then
+            del(animation_data_once,a)
+        end
+    end
+end
+
 
 function play_animation(animation)
     spr_select = flr((animation.current_frame/animation.frame_cycle))
