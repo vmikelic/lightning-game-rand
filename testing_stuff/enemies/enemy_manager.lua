@@ -34,6 +34,6 @@ function enemy_manager._draw()
     -- run draw loop for all enemies
     for en in all(enemy_manager.enemies) do
         en:_draw()
-        animate_once(en.x,en.y,{40},1,1,1,1)
+        --animate_once(en.x,en.y,{40},1,1,1,1) hitbox debug
     end
 end--_draw()
