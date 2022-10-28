@@ -37,7 +37,7 @@ function spawner._update()
     -- increment frame count
     spawner.frame += 1
     -- reset after second passed
-    if spawner.frame >= 30 then
+    if spawner.frame >= fps then
         spawner.frame = 0
         spawner.spawned_this_second = 0
     end

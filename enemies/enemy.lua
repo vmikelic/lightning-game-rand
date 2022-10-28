@@ -27,9 +27,6 @@ enemy={
 }
 enemy.__index = enemy
 
--- frames for acceleration normalization
-local fps = 30
-
 -- enemy base
 function enemy:new(o)
     return setmetatable(o or {}, self)

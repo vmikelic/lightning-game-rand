@@ -2,14 +2,16 @@ pico-8 cartridge // http://www.pico-8.com
 version 38
 __lua__
 #include ../animation.lua
+#include globals.lua
 #include enemy.lua
 #include asteroid.lua
 #include enemy_manager.lua
 #include spawner.lua
 #include ../util/wait.lua
+
 -->8
 -- update loop
-function _update()
+function _update60()
     spawner._update()
     enemy_manager._update()
     timers._update()
