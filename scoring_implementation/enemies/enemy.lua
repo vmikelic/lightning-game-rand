@@ -24,7 +24,7 @@ enemy={
 
     -- for combat
     health=100,
-    damage=1
+    damage=10
 }
 enemy.__index = enemy
 
@@ -122,9 +122,18 @@ function enemy:_player_collision()
             if(self.y < player_ship.y+16) then
                 if(self.x < player_ship.x+16) then
                     for i = 1, 5 do -- explosion
-                        animate_once(player_ship.x+(flr(rnd(16))-8),player_ship.y+(flr(rnd(16))-8),{43,45,64,66,68},2,2,flr(rnd(5))+3,flr(rnd(2))+1)
+                        animate_once(
+                            player_ship.x+(flr(rnd(16))-8),
+                            player_ship.y+(flr(rnd(16))-8),
+                            {43,45,64,66,68},
+                            2,
+                            2,
+                            flr(rnd(5))+3,
+                            flr(rnd(2))+1
+                        )
                     end
-                    enemy_manager.remove(en) -- remove asteroid
+                    player_ship:take_damage(self.damage) -- damage player
+                    enemy_manager.remove(self) -- remove asteroid
                     sfx(0)
                     --do stuff when player is hit
                 end

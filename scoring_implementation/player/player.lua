@@ -24,6 +24,16 @@ function player:new(new_laser_man)
 	return o
 end
 
+function player:take_damage(amount)
+	self.health = max(0,self.health-amount)
+	return self.health
+end
+
+function player:heal(amount)
+	self.health = min(self.max_health,self.health+amount)
+	return self.health
+end
+
 function player:control()
 	self:move ()
 	self:shoot()
