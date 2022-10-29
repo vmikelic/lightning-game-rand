@@ -99,6 +99,30 @@ local function draw_choices()
 
 end
 
+local function draw_keybinds()
+    -- x button
+    local clr = 4
+    if btn(❎) then
+        clr = 11
+    end
+    print('❎',128-8,120,clr)
+    spr(10,128-6,120-8,1,1)
+
+    -- right button
+    clr = 4
+    if btn(➡️) then
+        clr = 11
+    end
+    print('➡️',128-16,120,clr)
+
+    -- left button
+    clr = 4
+    if btn(⬅️) then
+        clr = 11
+    end
+    print('⬅️',128-24,120,clr)
+end
+
 -- primary draw loop
 function game._draw()
     -- draw loop
@@ -142,13 +166,6 @@ function game._draw()
 
     -- draw ui elements
     score.draw_ui()
-
-    -- draw keybinds
-    local clr = 4
-    if btn(❎) then
-        clr = 11
-    end
-    print('❎',128-8,120,clr)
-    spr(10,128-6,120-8,1,1)
+    draw_keybinds()
 
 end--_draw()
