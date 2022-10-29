@@ -143,4 +143,12 @@ function game._draw()
     -- draw ui elements
     score.draw_ui()
 
+    -- draw keybinds
+    local clr = 4
+    if btn(❎) then
+        clr = 11
+    end
+    print('❎',128-8,120,clr)
+    spr(10,128-6,120-8,1,1)
+
 end--_draw()
