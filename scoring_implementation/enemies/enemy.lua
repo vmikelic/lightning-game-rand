@@ -24,7 +24,8 @@ enemy={
 
     -- for combat
     health=100,
-    damage=10
+    damage=10,
+    score=0
 }
 enemy.__index = enemy
 
