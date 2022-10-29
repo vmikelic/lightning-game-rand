@@ -6,8 +6,19 @@ scene_manager={
 -- scene changer
 function scene_manager.swap(scene)
     scene_manager.current = scene
+    scene_manager._init()
     return scene_manager.current
 end
+
+-- primary init
+function scene_manager._init()
+    local s = scene_manager.current
+
+    -- route to scene init
+    if s == 0 then return main_menu._init() end
+    if s == 1 then return game._init() end
+
+end--_init()
 
 -- primary update loop
 function scene_manager._update()
