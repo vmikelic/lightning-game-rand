@@ -1,6 +1,6 @@
 -- [scene] in-game
 game={
-    game_over_option=1
+    game_over_option=1,
     game_over_options={
         'restart',
         'main menu'
