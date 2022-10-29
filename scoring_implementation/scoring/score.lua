@@ -12,6 +12,11 @@ function score.get()
     return score.amount
 end
 
+-- get max score
+function score.get_max()
+    return gamestate_manager.max_score + (main_menu.diff() - 1) * 20
+end
+
 -- reset score
 function score.reset()
     score.amount = 0
@@ -27,6 +32,6 @@ end
 -- draw loop
 function score.draw_ui()
     -- print('needed to win: '..gamestate_manager.max_score,2,2,7)
-    print('⧗ sCORE: '..score.amount..'/'..gamestate_manager.max_score,2,128-8-2,7)
+    print('⧗ sCORE: '..score.amount..'/'..score.get_max(),2,128-8-2,7)
     print('♥ '..player_ship.health..'/'..player_ship.max_health,2,128-8-8,7)
 end

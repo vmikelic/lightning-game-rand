@@ -21,7 +21,7 @@ end--_init()
 function game._update()
     -- game over state
     if player_ship.health <= 0
-    or score.get() >= gamestate_manager.max_score then
+    or score.get() >= score.get_max() then
         gamestate_manager.game_over = true
     end
 
