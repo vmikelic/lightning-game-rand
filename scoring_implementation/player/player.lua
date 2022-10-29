@@ -1,6 +1,8 @@
 //player class
 
-player = {}
+player = {
+	max_health=100
+}
 player.__index = player
 
 function player:new(new_laser_man)
@@ -16,7 +18,7 @@ function player:new(new_laser_man)
 	o.accel  = 0.05
 	o.decel  = 1.05
 	o.ssize  = 2
-	o.health = 100
+	o.health = self.max_health
 	o.laser_t = 0//seconds
 	o.laser_man_ref = new_laser_man
 	return o
