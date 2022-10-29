@@ -19,6 +19,11 @@ main_menu={
     subtitle_x1=-1
 }
 
+-- get difficulty
+function main_menu.diff()
+    return main_menu.selected
+end
+
 -- primary init
 function main_menu._init()
 

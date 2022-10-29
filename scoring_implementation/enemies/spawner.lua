@@ -25,7 +25,7 @@ function spawner._update()
     end
 
     -- if spawnable, try
-    if spawner.spawned_this_second < config.max_per_second then
+    if spawner.spawned_this_second < config.max_per_second + main_menu.diff() / 2 + score.get() / 100 then
         -- roll for spawn chance and spawn if eligible
         if rnd(1) >= config.spawn_chance then
             local x = flr(rnd(config.max_x-config.min_x)) + config.min_x
