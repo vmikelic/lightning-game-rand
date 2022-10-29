@@ -17,6 +17,13 @@ function enemy_manager.remove(en)
     del(enemy_manager.enemies, en)
 end
 
+-- reset the manager
+function enemy_manager.reset()
+    for en in all(enemy_manager.enemies) do
+        enemy_manager.remove(en)
+    end
+end
+
 -- update loop
 function enemy_manager._update()
     -- run update loop for all enemies

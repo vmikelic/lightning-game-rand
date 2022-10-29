@@ -7,6 +7,13 @@ game={
     }
 }
 
+-- primary init
+function game._init()
+    -- reset game state
+    gamestate_manager.reset()
+    enemy_manager.reset()
+end--_init()
+
 -- primary update loop
 function game._update()
     -- game over state

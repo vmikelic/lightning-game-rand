@@ -1,6 +1,6 @@
 -- [scene] main menu
 main_menu={
-    selected=0,
+    selected=1,
     selections={
         'easy',
         'medium',
@@ -44,7 +44,19 @@ end--_init()
 
 -- primary update loop
 function main_menu._update()
-
+    if btnp(⬆️) then
+        main_menu.selected -= 1
+        if main_menu.selected < 1 then
+            main_menu.selected = #main_menu.selections end
+    end
+    if btnp(⬇️) then
+        main_menu.selected += 1
+        if main_menu.selected > #main_menu.selections then
+            main_menu.selected = 1 end
+    end
+    if btnp(🅾️) then
+        scene_manager.swap(1)
+    end
 end--_update()
 
 local function draw_title()
@@ -85,6 +97,44 @@ local function draw_subtitle()
     end
 end
 
+local blinking = 0
+local blinking_cycle = 80 -- does a full blink each frame amount
+local function draw_choices()
+    local offset = 16
+    for i,sel in ipairs(main_menu.selections) do
+        local x0 = 64 - (#sel * 2)
+        local x1 = x0 + #sel * 4 - 2
+        local y = 35 + offset * i
+        local clr = 7
+
+        -- check if option is the currently selected
+        if i == main_menu.selected then
+            -- swap to green
+            clr = 11
+
+            -- draw line with blinking effect
+            if blinking < blinking_cycle / 2 then
+                line(x0,y+7,x1,y+7,3)
+            end
+        end
+
+        -- finally, print
+        print(sel,x0,y,clr)
+
+    end
+
+    -- draw confirmation
+    local msg = 'press 🅾️ to start'
+    print(msg,64-(#msg*2),35 + #main_menu.selections * 16 + 16, 11)
+
+    -- update blinker
+    blinking += 1
+    if blinking > blinking_cycle then
+        blinking = 1
+    end
+
+end
+
 -- primary draw loop
 function main_menu._draw()
     cls()
@@ -95,6 +145,9 @@ function main_menu._draw()
 
     -- draw subtitle
     draw_subtitle()
+
+    -- draw player choices
+    draw_choices()
     
     -- animate consmetics
     main_menu.bullet:animate()
