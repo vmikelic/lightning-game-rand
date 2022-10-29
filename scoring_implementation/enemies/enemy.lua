@@ -118,9 +118,9 @@ end--_draw()
 
 function enemy:_player_collision()
     if(self.y+8 > player_ship.y) then
-        if(self.x+8 > player_ship.x) then
-            if(self.y < player_ship.y+16) then
-                if(self.x < player_ship.x+16) then
+        if(self.x+8 > player_ship.x+3) then
+            if(self.y < player_ship.y+11) then
+                if(self.x < player_ship.x+14) then
                     for i = 1, 5 do -- explosion
                         animate_once(
                             player_ship.x+(flr(rnd(16))-8),
