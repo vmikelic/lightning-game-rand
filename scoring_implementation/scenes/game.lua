@@ -9,7 +9,11 @@ game={
 
 -- primary update loop
 function game._update()
-    -- game over screen
+    -- game over state
+    if player_ship.health <= 0
+    or score.get() >= gamestate_manager.max_score then
+        gamestate_manager.game_over = true
+    end
     if gamestate_manager.game_over then
         -- TODO: restart controls
         return
@@ -29,19 +33,38 @@ function game._draw()
     -- draw loop
     cls()
     draw_stars()
-	player_ship:draw()
+    if player_ship.health > 0 then
+	    player_ship:draw() end
 	laser_man_obj:draw_lasers()
     enemy_manager._draw()
     handle_animations()
 
-    -- draw ui elements
-    score.draw_ui()
-
-    -- game over screen
+    -- game over interrupt
     if gamestate_manager.game_over then
         -- TODO: restart screen
         local msg = 'gAME oVER'
-        print(msg, (120-#msg*8),44)
+        print(msg,(64-#msg*2),44,7)
+
+        -- print win/lose
+        local subtitle = 'yOU lOSE'
+        local clr = 8
+        if player_ship.health > 0 then
+            subtitle = 'yOU wIN'
+            clr = 11
+        end
+        print(subtitle,(64-#subtitle*2),54,clr)
+
+        -- print final score
+        local fs = 'final score: '..score.get()
+        print(fs,64-#fs*2,64,7)
         return
     end
+
+    --[[
+        after game over interrupt- game is still active
+    ]]
+
+    -- draw ui elements
+    score.draw_ui()
+
 end--_draw()
