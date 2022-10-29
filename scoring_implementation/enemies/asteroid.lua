@@ -22,6 +22,10 @@ function asteroid:new(o)
     o.wiggle_x = config.wiggle_x
     o.wiggle_y = config.wiggle_y
 
+    -- for combat
+    o.damage = 25
+    o.score = 10
+
     -- create enemy object and apply asteroid properties
     local en = enemy:new(o)
     en:set_acceleration(0, rnd(config.max_acceleration))

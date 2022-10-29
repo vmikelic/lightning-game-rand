@@ -29,7 +29,17 @@ function laser:is_hit()
 				if(self.y < en.y+8) then
 					if(self.x < en.x+8) then
 						-- destroy enemy and return
-						animate_once(en.x-4,en.y-4,{43,45,64,66,68},2,2,3,1)
+						animate_once(
+							en.x-4,
+							en.y-4,
+							{43,45,64,66,68},
+							2,
+							2,
+							3,
+							1
+						)
+						-- increment score and remove
+						score.inc(en.score)
 						enemy_manager.remove(en)
 						sfx(3)
 						return true
