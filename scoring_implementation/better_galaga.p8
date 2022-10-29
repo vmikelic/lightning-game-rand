@@ -2,20 +2,42 @@ pico-8 cartridge // http://www.pico-8.com
 version 38
 __lua__
 -- include statements
-#include ../animation.lua
+
+-- top-level imports
+#include globals.lua
 #include stars.lua
+
+-- utility
+#include util/wait.lua
+
+-- gamestate
+#include gamestate/gamestate_manager.lua
+
+-- scoring
+#include scoring/score.lua
+
+-- ! FIX ME: animation
+#include ../animation.lua
+
+-- player
 #include player/laser.lua
 #include player/laser_manager.lua 
 #include player/player.lua
+
+-- enemies
 #include enemies/enemy.lua
 #include enemies/asteroid.lua
 #include enemies/enemy_manager.lua
 #include enemies/spawner.lua
-#include ../util/wait.lua
+
+-- scene imports
+#include scenes/scene_manager.lua
+#include scenes/game.lua
 
 -->8
 -- _init()
 function _init()
+    scene_manager.swap(1)
     init_stars()
     music(0) 
     laser_man_obj = laser_manager:new(0.09)
@@ -25,25 +47,13 @@ end--_init()
 -->8
 -- _update()
 function _update60()
-    update_stars()
-    spawner._update()
-    enemy_manager._update()
-    timers._update()
-    player_ship:update()
-	laser_man_obj:update()
+    scene_manager._update()
 
 end--_update()
 -->8
 -- _draw()
 function _draw()
-    cls()
-    draw_stars()
-	player_ship:draw()
-	laser_man_obj:draw_lasers()
-    enemy_manager._draw()
-    --animate_once(player_ship.x,player_ship.y,{41},2,2,1,1) hitbox debug
-    handle_animations()
-
+    scene_manager._draw()
 end--_draw()
 __gfx__
 0067700000677000006770000ddddd000ddddd000ddddd0000000000700000000000000070000000030000000300000000007000000000000000000000000000
