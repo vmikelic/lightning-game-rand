@@ -12,6 +12,12 @@ function score.get()
     return score.amount
 end
 
+-- reset score
+function score.reset()
+    score.amount = 0
+    return score.amount
+end
+
 -- add to player score
 function score.inc(points)
     score.amount += points

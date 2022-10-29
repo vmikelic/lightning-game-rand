@@ -18,6 +18,13 @@ function laser_manager:fire_laser(local_x, local_y)
 	animate_once(local_x-3,local_y-4,{0,1,2},1,1,1,1)
 end
 
+-- fully reset manager
+function laser_manager:reset()
+	for las in all(self.lasers) do
+		del(self.lasers, las)
+	end
+end
+
 function laser_manager:update()
 	for i = 1, #self.lasers do
 		if (self.lasers[i] != nil) then

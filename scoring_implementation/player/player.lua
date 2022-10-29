@@ -34,6 +34,15 @@ function player:heal(amount)
 	return self.health
 end
 
+function player:reset()
+	self.health = self.max_health
+	self.x = 64
+	self.y = 100
+	self.dx = 0
+	self.dy = 0
+	return true
+end
+
 function player:control()
 	self:move ()
 	self:shoot()
