@@ -28,9 +28,6 @@ enemy={
 }
 enemy.__index = enemy
 
--- frames for acceleration normalization
-local fps = 30
-
 -- enemy base
 function enemy:new(o)
     return setmetatable(o or {}, self)
@@ -66,11 +63,11 @@ function enemy:_update()
 
     -- apply acceleration
     if self.acc_x > 0 then
-        self.vel_x += self.acc_x/fps
+        self.vel_x += self.acc_x/globals.fps
         self.vel_x = min(self.vel_max, self.vel_x)
     end
     if self.acc_y > 0 then
-        self.vel_y += self.acc_y/fps
+        self.vel_y += self.acc_y/globals.fps
         self.vel_y = min(self.vel_max, self.vel_y)
     end
 
@@ -79,11 +76,11 @@ function enemy:_update()
 
         -- move x
         if self.vel_x > 0 then
-            self.x += self.vel_x/fps
+            self.x += self.vel_x/globals.fps
         end
         -- move y
         if self.vel_y > 0 then
-            self.y += self.vel_y/fps
+            self.y += self.vel_y/globals.fps
         end
 
         -- apply vertical wiggle
